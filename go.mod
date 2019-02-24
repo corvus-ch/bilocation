@@ -7,6 +7,7 @@ require (
 	github.com/corvus-ch/logr v0.0.0-20180917163152-45217966b77e
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/golang/protobuf v1.2.0
+	github.com/pkg/xattr v0.4.0
 	github.com/sebdah/goldie v0.0.0-20180424091453-8784dd1ab561
 	github.com/stretchr/testify v1.3.0
 	golang.org/x/sync v0.0.0-20181221193216-37e7f081c4d4 // indirect
