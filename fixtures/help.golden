@@ -1,8 +1,25 @@
-ERROR usage: bilocation [<flags>]
+ERROR usage: bilocation [<flags>] <command> [<args> ...]
 ERROR 
 ERROR file management with tags
 ERROR 
 ERROR Flags:
 ERROR   --help     Show context-sensitive help (also try --help-long and --help-man).
 ERROR   --version  Show application version.
+ERROR 
+ERROR Commands:
+ERROR   help [<command>...]
+ERROR     Show help.
+ERROR 
+ERROR   tag <file> <tag>...
+ERROR     adds a tag to a file
+ERROR 
+ERROR   untag <file> <tag>...
+ERROR     removes a tag from a file
+ERROR 
+ERROR   search [<flags>] <query>
+ERROR     search for files wit a given tag
+ERROR 
+ERROR   summary [<flags>] <query>
+ERROR     prints a summary of existing tags for a given search query
+ERROR 
 ERROR 

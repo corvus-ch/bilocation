@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/corvus-ch/bilocation/cmd"
 	stdLog "log"
 	"os"
 
@@ -24,12 +25,18 @@ func App(log logr.Logger) *kingpin.Application {
 	app.UsageWriter(w)
 	app.Version(fmt.Sprintf("%v, commit %v, built at %v", version, commit, date))
 
+	cfg := cmd.NewConfig()
+	cmd.Tag(app, cfg)
+	cmd.Untag(app, cfg)
+	cmd.Search(app, cfg)
+	cmd.Summary(app, cfg)
+
 	return app
 }
 
 func main() {
 	log := std.New(0, stdLog.New(os.Stderr, "", 0), stdLog.New(os.Stdout, "", 0))
-	if 	_, err := App(log).Parse(os.Args[1:]); err != nil {
+	if _, err := App(log).Parse(os.Args[1:]); err != nil {
 		log.Errorf("%s, try --help", err)
 		os.Exit(1)
 	}

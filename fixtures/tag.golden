@@ -1,0 +1,12 @@
+ERROR usage: bilocation tag <file> <tag>...
+ERROR 
+ERROR adds a tag to a file
+ERROR 
+ERROR Flags:
+ERROR   --help     Show context-sensitive help (also try --help-long and --help-man).
+ERROR   --version  Show application version.
+ERROR 
+ERROR Args:
+ERROR   <file>  path to the file
+ERROR   <tag>   a list of tag names or `=` delimited key value pairs
+ERROR 

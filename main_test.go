@@ -9,7 +9,11 @@ import (
 )
 
 var tests = map[string][]string{
-	"help": {"--help"},
+	"help":    {"help"},
+	"tag":     {"help", "tag"},
+	"untag":   {"help", "untag"},
+	"search":  {"help", "search"},
+	"summary": {"help", "summary"},
 }
 
 func TestApp(t *testing.T) {

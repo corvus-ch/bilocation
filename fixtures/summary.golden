@@ -1,0 +1,13 @@
+ERROR usage: bilocation summary [<flags>] <query>
+ERROR 
+ERROR prints a summary of existing tags for a given search query
+ERROR 
+ERROR Flags:
+ERROR       --help     Show context-sensitive help (also try --help-long and
+ERROR                  --help-man).
+ERROR       --version  Show application version.
+ERROR   -C, --path=.   the root dir to start the search with
+ERROR 
+ERROR Args:
+ERROR   <query>  the search query
+ERROR 

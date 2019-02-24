@@ -1,0 +1,13 @@
+ERROR usage: bilocation search [<flags>] <query>
+ERROR 
+ERROR search for files wit a given tag
+ERROR 
+ERROR Flags:
+ERROR       --help     Show context-sensitive help (also try --help-long and
+ERROR                  --help-man).
+ERROR       --version  Show application version.
+ERROR   -C, --path=.   the root dir to start the search with
+ERROR 
+ERROR Args:
+ERROR   <query>  the search query
+ERROR 
