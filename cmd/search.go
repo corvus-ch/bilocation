@@ -9,7 +9,16 @@ import (
 func Search(app *kingpin.Application, cfg *config) {
 	c := app.Command("search", "search for files wit a given tag")
 	c.Action(func(_ *kingpin.ParseContext) error {
-		return search.Search(cfg)
+		matches, err := search.Search(cfg)
+		if err != nil {
+			return err
+		}
+
+		for _, match := range matches {
+			cfg.Log().Info(match.Path())
+		}
+
+		return nil
 	})
 	c.Arg("query", "the search query").
 		Required().

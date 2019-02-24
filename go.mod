@@ -1,6 +1,7 @@
 module github.com/corvus-ch/bilocation
 
 require (
+	bou.ke/monkey v1.0.1 // indirect
 	github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc // indirect
 	github.com/alecthomas/units v0.0.0-20151022065526-2efee857e7cf // indirect
 	github.com/antlr/antlr4 v0.0.0-20190223165740-dade65a895c2
@@ -11,6 +12,6 @@ require (
 	github.com/pkg/xattr v0.4.0
 	github.com/sebdah/goldie v0.0.0-20180424091453-8784dd1ab561
 	github.com/stretchr/testify v1.3.0
-	golang.org/x/sync v0.0.0-20181221193216-37e7f081c4d4 // indirect
+	golang.org/x/sync v0.0.0-20181221193216-37e7f081c4d4
 	gopkg.in/alecthomas/kingpin.v2 v2.2.6
 )

@@ -25,7 +25,7 @@ func App(log logr.Logger) *kingpin.Application {
 	app.UsageWriter(w)
 	app.Version(fmt.Sprintf("%v, commit %v, built at %v", version, commit, date))
 
-	cfg := cmd.NewConfig()
+	cfg := cmd.NewConfig(log)
 	cmd.Tag(app, cfg)
 	cmd.Untag(app, cfg)
 	cmd.Search(app, cfg)
