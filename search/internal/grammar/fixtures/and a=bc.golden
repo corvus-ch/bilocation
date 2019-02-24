@@ -1,0 +1,4 @@
+INFO query:
+INFO 	AND: a=b/c
+INFO 		name tag: name(b) classifier(a) op(=)
+INFO 		name tag: name(c) classifier() op()

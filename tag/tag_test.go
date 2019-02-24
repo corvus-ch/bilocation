@@ -40,8 +40,8 @@ var untagTests = map[string]struct {
 	golden string
 	tags   []string
 }{
-	"name": {"empty", []string{"test name"}},
-	"name_classifier": {"empty", []string{"first classifier=test name"}},
+	"name":             {"empty", []string{"test name"}},
+	"name_classifier":  {"empty", []string{"first classifier=test name"}},
 	"name_classifiers": {"name_classifier", []string{"second classifier=test name"}},
 }
 

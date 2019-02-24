@@ -1,0 +1,4 @@
+INFO query:
+INFO 	OR: a,b=*
+INFO 		name tag: name(a) classifier() op()
+INFO 		classifier tag: classifier(b)
