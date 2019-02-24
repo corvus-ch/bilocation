@@ -1,3 +1,5 @@
+// +build integration
+
 package tag_test
 
 import (

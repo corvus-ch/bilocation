@@ -1,0 +1,20 @@
+version: "2"
+
+plugins:
+  gofmt:
+    enabled: true
+  golint:
+    enabled: true
+  govet:
+    enabled: true
+  fixme:
+    enabled: true
+
+exclude_patterns:
+  - "**/*.golden"
+  - "**/*.interp"
+  - "**/*.pb.go"
+  - "**/*.tokens"
+  - "**/path*_listener.go"
+  - "**/path_lexer.go"
+  - "**/path_parser.go"

@@ -32,7 +32,7 @@ deps:
 test: $(cover_file)
 
 $(cover_file): $(wildcard **/*_test.go)
-	go test -coverpkg=./... -covermode=atomic -coverprofile=$@ ./...
+	go test -covermode=atomic -coverprofile=$@ ./...
 
 .PHONY: build
 build: $(binary_name)

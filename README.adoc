@@ -1,5 +1,9 @@
 = Bilocation: a tool for managing files using tags instead of folders
 
+image:https://travis-ci.org/corvus-ch/bilocation.svg?branch=master["Build Status", link="https://travis-ci.org/corvus-ch/bilocation"]
+image:https://api.codeclimate.com/v1/badges/31917c2baffbbfa739c3/maintainability["Maintainability", link="https://codeclimate.com/github/corvus-ch/bilocation/maintainability"]
+image:https://api.codeclimate.com/v1/badges/31917c2baffbbfa739c3/test_coverage["Test Coverage", link="https://codeclimate.com/github/corvus-ch/bilocation/test_coverage"]
+
 This file should go into location _A_. But wait, it also belongs to location
 _B_. If you face this issue regularly while managing your files, `bilocation`
 is for you.
