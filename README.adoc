@@ -1,0 +1,38 @@
+= Bilocation: a tool for managing files using tags instead of folders
+
+This file should go into location _A_. But wait, it also belongs to location
+_B_. If you face this issue regularly while managing your files, `bilocation`
+is for you.
+
+Bilocation puts beside the notion of organizing files in a tree structure and
+uses tags instead.
+
+== Installation
+
+[source,bash]
+----
+go get github.com/corvus-ch/bilocation
+----
+
+You are required to have have golang installed and your `GOPAHT` setup
+correctly. Also make sure that your `$GOPAHT/bin` directory is added to your
+search path (`PATH`).
+
+== Usage
+
+[source,bash]
+----
+$ bilocation tag path/to/some/file my_tag
+$ bilocation summary
+my_tag
+$ bilocation search my_tag
+path/to/some/file
+$ bilocation untag path/to/some/file my_tag
+----
+
+See `bilocation help` for all the available commands, options and arguments.
+
+== Contributing and license
+
+This library is licensed under link:LICENSE[MIT]. For information about how to
+contribute to this project, see link:CONTRIBUTING.adoc[CONTRIBUTING].
