@@ -40,6 +40,14 @@ build: $(binary_name)
 $(binary_name): $(wildcard **/*.go)
 	go build
 
+.PHONY: release
+release:
+	goreleaser --rm-dist
+
+.PHONY: snapshot
+snapshot:
+	goreleaser --rm-dist --snapshot
+
 .PHONY: protobuf
 protobuf: tag/internal/bilocation.pb.go
 

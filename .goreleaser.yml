@@ -1,0 +1,33 @@
+project_name: bilocation
+
+builds:
+  - binary: bilocation
+    goos:
+      - darwin
+      - linux
+    goarch:
+      - amd64
+
+release:
+  github:
+    owner: corvus-ch
+    name: bilocation
+
+brew:
+  github:
+    owner: corvus-ch
+    name: homebrew-tools
+
+  homepage: https://github.com/corvus-ch/tagfuse
+  description: A tagging file system
+
+nfpm:
+  homepage: https://github.com/corvus-ch/bilocation
+  description: A tagging file system
+  maintainer: Christian Häusler <haeusler.christian@mac.com>
+  license: MIT
+
+  formats:
+    - deb
+
+  bindir: /usr/bin
