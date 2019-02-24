@@ -38,6 +38,13 @@ build: $(binary_name)
 $(binary_name): $(wildcard **/*.go)
 	go build
 
+.PHONY: protobuf
+protobuf: tag/internal/bilocation.pb.go
+
+tag/internal/bilocation.pb.go: bilocation.proto
+	mkdir -p $(@D)
+	protoc --go_out=$(@D) $<
+
 .PHONY: clean
 clean:
 	rm -rf $(binary_name) $(cover_file)

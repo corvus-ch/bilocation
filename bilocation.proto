@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package internal;
+
+message Set {
+  repeated Tag tags = 1;
+}
+
+message Tag {
+  string name = 1;
+  repeated string classifiers = 2;
+}
