@@ -76,7 +76,13 @@ func Write(file string, set Set) error {
 }
 
 func isAttributeNotFoundError(err error) bool {
-	return strings.Contains(err.Error(), "attribute not found")
+	for _, msg := range []string{"attribute not found", "no data available"} {
+		if strings.Contains(err.Error(), msg) {
+			return true
+		}
+	}
+
+	return false
 }
 
 func nameAndClassifier(s string) (string, string, bool) {
