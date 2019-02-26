@@ -8,6 +8,12 @@ builds:
     goarch:
       - amd64
 
+archive:
+  files:
+    - LICENSE
+    - README.adoc
+    - CONTRIBUTING.adoc
+
 release:
   github:
     owner: corvus-ch
