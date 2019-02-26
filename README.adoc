@@ -13,14 +13,29 @@ uses tags instead.
 
 == Installation
 
+=== Install the pre-compiled binary
+
+==== OS X
+
 [source,bash]
 ----
-go get github.com/corvus-ch/bilocation
+brew install corvus-ch/tools/bilocation
 ----
 
-You are required to have have golang installed and your `GOPAHT` setup
-correctly. Also make sure that your `$GOPAHT/bin` directory is added to your
-search path (`PATH`).
+==== Debian/Ubuntu
+
+Download the .deb from the
+https://github.com/corvus-ch/bilocation/releases/latest[latest release] and
+install with `dpkg -i`.
+
+=== Compiling from source
+
+[source,bash]
+----
+git clone git@github.com:corvus-ch/bilocation
+cd bilocation
+make build
+----
 
 == Usage
 
