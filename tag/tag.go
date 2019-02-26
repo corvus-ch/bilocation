@@ -6,7 +6,7 @@ import (
 )
 
 // XattrName holds the extended attribute name the tags are stored with.
-const XattrName = "bilocation.corvus-ch.name/v1/tags"
+const XattrName = "user.bilocation.corvus-ch.name/v1/tags"
 
 // Config provides the input for tag operations.
 type Config interface {
