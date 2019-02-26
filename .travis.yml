@@ -7,13 +7,17 @@ branches:
   only:
     - master
 
+os:
+  - linux
+  - osx
+
 env:
   - GO111MODULE=on
 
 before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+  - [[ "$TRAVIS_OS_NAME" == "linux" ]] && curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - [[ "$TRAVIS_OS_NAME" == "linux" ]] && chmod +x ./cc-test-reporter
+  - [[ "$TRAVIS_OS_NAME" == "linux" ]] && ./cc-test-reporter before-build
 
 install:
   - make deps
@@ -22,4 +26,4 @@ script:
   - make test
 
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - [[ "$TRAVIS_OS_NAME" == "linux" ]] && ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
