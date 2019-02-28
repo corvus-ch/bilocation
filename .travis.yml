@@ -14,6 +14,9 @@ os:
 env:
   - GO111MODULE=on
 
+before_install:
+    - gem install package_cloud
+
 before_script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then chmod +x ./cc-test-reporter; fi
@@ -27,3 +30,21 @@ script:
 
 after_script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
+
+deploy:
+  - provider: script
+    skip_cleanup: true
+    script:
+      - curl -sL https://git.io/goreleaser | bash -s -- --snapshot
+      - package_cloud push corvus-ch/tools/ubuntu/xenial dist/bilocation_*_linux_*.deb
+      - package_cloud push corvus-ch/tools/ubuntu/bionic dist/bilocation_*_linux_*.deb
+      - package_cloud push corvus-ch/tools/debian/stretch dist/bilocation_*_linux_armv6.deb
+      - package_cloud push corvus-ch/tools/debian/buster dist/bilocation_*_linux_*.deb
+      - package_cloud push corvus-ch/tools/raspbian/stretch dist/bilocation_*_linux_armv6.deb
+      - package_cloud push corvus-ch/tools/raspbian/buster dist/bilocation_*_linux_armv6.deb
+      - package_cloud push corvus-ch/tools/el/6 dist/bilocation_*_linux_*.rpm
+      - package_cloud push corvus-ch/tools/el/7 dist/bilocation_*_linux_*.rpm
+      - package_cloud push corvus-ch/tools/fedora/28 dist/bilocation_*_linux_*.rpm
+      - package_cloud push corvus-ch/tools/fedora/29 dist/bilocation_*_linux_*.rpm
+    on:
+      condition: $TRAVIS_OS_NAME = linux
