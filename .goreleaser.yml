@@ -5,8 +5,11 @@ builds:
     goos:
       - darwin
       - linux
+
     goarch:
       - amd64
+      - 386
+      - arm
 
 archive:
   files:
@@ -35,5 +38,6 @@ nfpm:
 
   formats:
     - deb
+    - rpm
 
   bindir: /usr/bin

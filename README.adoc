@@ -3,6 +3,8 @@
 image:https://travis-ci.org/corvus-ch/bilocation.svg?branch=master["Build Status", link="https://travis-ci.org/corvus-ch/bilocation"]
 image:https://api.codeclimate.com/v1/badges/31917c2baffbbfa739c3/maintainability["Maintainability", link="https://codeclimate.com/github/corvus-ch/bilocation/maintainability"]
 image:https://api.codeclimate.com/v1/badges/31917c2baffbbfa739c3/test_coverage["Test Coverage", link="https://codeclimate.com/github/corvus-ch/bilocation/test_coverage"]
+image:https://img.shields.io/badge/deb-packagecloud.io-844fec.svg['DEB Repository, link="https://packagecloud.io/corvus-ch/tools"]
+image:https://img.shields.io/badge/rpm-packagecloud.io-844fec.svg['RPM Repository, link="https://packagecloud.io/corvus-ch/tools"]
 
 This file should go into location _A_. But wait, it also belongs to location
 _B_. If you face this issue regularly while managing your files, `bilocation`
@@ -15,18 +17,28 @@ uses tags instead.
 
 === Install the pre-compiled binary
 
-==== OS X
+==== Homebrew
 
 [source,bash]
 ----
 brew install corvus-ch/tools/bilocation
 ----
 
-==== Debian/Ubuntu
+==== deb
 
-Download the .deb from the
-https://github.com/corvus-ch/bilocation/releases/latest[latest release] and
-install with `dpkg -i`.
+[source,bash]
+----
+curl -s https://packagecloud.io/install/repositories/corvus-ch/tools/script.deb.sh | sudo bash
+apt install bilocation
+----
+
+==== rpm
+
+[source,bash]
+----
+curl -s https://packagecloud.io/install/repositories/corvus-ch/tools/script.rpm.sh | sudo bash
+yum install bilocation
+----
 
 === Compiling from source
 

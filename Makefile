@@ -9,7 +9,8 @@ SHELL := bash
 # Environment variables
 # ---------------------
 
-GOPATH ?= $(shell go env GOPATH)
+GOPATH     ?= $(shell go env GOPATH)
+GORELEASER ?= goreleaser
 
 # ------------------
 # Internal variables
@@ -42,11 +43,21 @@ $(binary_name): $(wildcard **/*.go)
 
 .PHONY: release
 release:
-	goreleaser --rm-dist
+	$(GORELEASER) --rm-dist
+	package_cloud push corvus-ch/tools/ubuntu/xenial dist/bilocation_*_linux_*.deb
+	package_cloud push corvus-ch/tools/ubuntu/bionic dist/bilocation_*_linux_*.deb
+	package_cloud push corvus-ch/tools/debian/stretch dist/bilocation_*_linux_armv6.deb
+	package_cloud push corvus-ch/tools/debian/buster dist/bilocation_*_linux_*.deb
+	package_cloud push corvus-ch/tools/raspbian/stretch dist/bilocation_*_linux_armv6.deb
+	package_cloud push corvus-ch/tools/raspbian/buster dist/bilocation_*_linux_armv6.deb
+	package_cloud push corvus-ch/tools/el/6 dist/bilocation_*_linux_*.rpm
+	package_cloud push corvus-ch/tools/el/7 dist/bilocation_*_linux_*.rpm
+	package_cloud push corvus-ch/tools/fedora/28 dist/bilocation_*_linux_*.rpm
+	package_cloud push corvus-ch/tools/fedora/29 dist/bilocation_*_linux_*.rpm
 
 .PHONY: snapshot
 snapshot:
-	goreleaser --rm-dist --snapshot
+	$(GORELEASER) --rm-dist --snapshot
 
 .PHONY: protobuf
 protobuf: tag/internal/bilocation.pb.go

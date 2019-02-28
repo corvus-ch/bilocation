@@ -6,6 +6,7 @@ go:
 branches:
   only:
     - master
+    - /^v.*$/
 
 os:
   - linux
@@ -13,6 +14,15 @@ os:
 
 env:
   - GO111MODULE=on
+
+addons:
+  apt:
+    packages:
+    - rpm
+
+cache:
+    directories:
+      - vendor
 
 before_script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter; fi
@@ -27,3 +37,13 @@ script:
 
 after_script:
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
+
+before_deploy:
+  - rvm $(travis_internal_ruby) --fuzzy do ruby -S gem install package_cloud
+
+deploy:
+  - provider: script
+    script: GORELEASER='curl -sL https://git.io/goreleaser | bash -s --' make release
+    on:
+      tags: true
+      condition: $TRAVIS_OS_NAME = linux
