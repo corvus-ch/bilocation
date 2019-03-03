@@ -100,6 +100,30 @@ func (m *nameAndClassifier) Match(set tag.Set) bool {
 	return set.HasClassifier(m.name, m.classifier)
 }
 
+type none struct{}
+
+// NewNone creates a matcher which matches empty tag sets.
+func NewNone() Matcher {
+	return &none{}
+}
+
+func (m *none) Match(set tag.Set) bool {
+	return len(set) == 0
+}
+
+type not struct {
+	matcher Matcher
+}
+
+// NewNot creates a matcher which never matches.
+func NewNot(m Matcher) Matcher {
+	return &not{matcher: m}
+}
+
+func (m *not) Match(set tag.Set) bool {
+	return !m.matcher.Match(set)
+}
+
 type null struct{}
 
 // NewNil creates a matcher which never matches.
