@@ -15,67 +15,75 @@ var _ = reflect.Copy
 var _ = strconv.Itoa
 
 var parserATN = []uint16{
-	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 7, 109, 4,
-	2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7, 4,
-	8, 9, 8, 3, 2, 5, 2, 18, 10, 2, 3, 2, 3, 2, 5, 2, 22, 10, 2, 3, 2, 5, 2,
-	25, 10, 2, 3, 2, 3, 2, 5, 2, 29, 10, 2, 3, 2, 5, 2, 32, 10, 2, 3, 2, 3,
-	2, 5, 2, 36, 10, 2, 3, 2, 5, 2, 39, 10, 2, 3, 2, 3, 2, 5, 2, 43, 10, 2,
-	3, 2, 5, 2, 46, 10, 2, 3, 3, 3, 3, 3, 3, 3, 3, 6, 3, 52, 10, 3, 13, 3,
-	14, 3, 53, 5, 3, 56, 10, 3, 3, 4, 3, 4, 3, 4, 6, 4, 61, 10, 4, 13, 4, 14,
-	4, 62, 3, 4, 3, 4, 3, 4, 6, 4, 68, 10, 4, 13, 4, 14, 4, 69, 3, 4, 3, 4,
-	3, 4, 6, 4, 75, 10, 4, 13, 4, 14, 4, 76, 3, 4, 3, 4, 3, 4, 6, 4, 82, 10,
-	4, 13, 4, 14, 4, 83, 5, 4, 86, 10, 4, 3, 5, 3, 5, 3, 5, 6, 5, 91, 10, 5,
-	13, 5, 14, 5, 92, 3, 6, 3, 6, 5, 6, 97, 10, 6, 3, 7, 3, 7, 3, 7, 3, 7,
-	3, 8, 3, 8, 3, 8, 3, 8, 5, 8, 107, 10, 8, 3, 8, 2, 2, 9, 2, 4, 6, 8, 10,
-	12, 14, 2, 2, 2, 125, 2, 45, 3, 2, 2, 2, 4, 55, 3, 2, 2, 2, 6, 85, 3, 2,
-	2, 2, 8, 87, 3, 2, 2, 2, 10, 96, 3, 2, 2, 2, 12, 98, 3, 2, 2, 2, 14, 106,
-	3, 2, 2, 2, 16, 18, 7, 3, 2, 2, 17, 16, 3, 2, 2, 2, 17, 18, 3, 2, 2, 2,
-	18, 19, 3, 2, 2, 2, 19, 21, 5, 6, 4, 2, 20, 22, 7, 3, 2, 2, 21, 20, 3,
-	2, 2, 2, 21, 22, 3, 2, 2, 2, 22, 46, 3, 2, 2, 2, 23, 25, 7, 3, 2, 2, 24,
-	23, 3, 2, 2, 2, 24, 25, 3, 2, 2, 2, 25, 26, 3, 2, 2, 2, 26, 28, 5, 8, 5,
-	2, 27, 29, 7, 3, 2, 2, 28, 27, 3, 2, 2, 2, 28, 29, 3, 2, 2, 2, 29, 46,
-	3, 2, 2, 2, 30, 32, 7, 3, 2, 2, 31, 30, 3, 2, 2, 2, 31, 32, 3, 2, 2, 2,
-	32, 33, 3, 2, 2, 2, 33, 35, 5, 10, 6, 2, 34, 36, 7, 3, 2, 2, 35, 34, 3,
-	2, 2, 2, 35, 36, 3, 2, 2, 2, 36, 46, 3, 2, 2, 2, 37, 39, 7, 3, 2, 2, 38,
-	37, 3, 2, 2, 2, 38, 39, 3, 2, 2, 2, 39, 40, 3, 2, 2, 2, 40, 42, 5, 4, 3,
-	2, 41, 43, 7, 3, 2, 2, 42, 41, 3, 2, 2, 2, 42, 43, 3, 2, 2, 2, 43, 46,
-	3, 2, 2, 2, 44, 46, 3, 2, 2, 2, 45, 17, 3, 2, 2, 2, 45, 24, 3, 2, 2, 2,
-	45, 31, 3, 2, 2, 2, 45, 38, 3, 2, 2, 2, 45, 44, 3, 2, 2, 2, 46, 3, 3, 2,
-	2, 2, 47, 56, 7, 4, 2, 2, 48, 51, 7, 4, 2, 2, 49, 50, 7, 3, 2, 2, 50, 52,
-	7, 4, 2, 2, 51, 49, 3, 2, 2, 2, 52, 53, 3, 2, 2, 2, 53, 51, 3, 2, 2, 2,
-	53, 54, 3, 2, 2, 2, 54, 56, 3, 2, 2, 2, 55, 47, 3, 2, 2, 2, 55, 48, 3,
-	2, 2, 2, 56, 5, 3, 2, 2, 2, 57, 60, 5, 8, 5, 2, 58, 59, 7, 3, 2, 2, 59,
-	61, 5, 8, 5, 2, 60, 58, 3, 2, 2, 2, 61, 62, 3, 2, 2, 2, 62, 60, 3, 2, 2,
-	2, 62, 63, 3, 2, 2, 2, 63, 86, 3, 2, 2, 2, 64, 67, 5, 8, 5, 2, 65, 66,
-	7, 3, 2, 2, 66, 68, 5, 10, 6, 2, 67, 65, 3, 2, 2, 2, 68, 69, 3, 2, 2, 2,
-	69, 67, 3, 2, 2, 2, 69, 70, 3, 2, 2, 2, 70, 86, 3, 2, 2, 2, 71, 74, 5,
-	10, 6, 2, 72, 73, 7, 3, 2, 2, 73, 75, 5, 8, 5, 2, 74, 72, 3, 2, 2, 2, 75,
-	76, 3, 2, 2, 2, 76, 74, 3, 2, 2, 2, 76, 77, 3, 2, 2, 2, 77, 86, 3, 2, 2,
-	2, 78, 81, 5, 10, 6, 2, 79, 80, 7, 3, 2, 2, 80, 82, 5, 10, 6, 2, 81, 79,
-	3, 2, 2, 2, 82, 83, 3, 2, 2, 2, 83, 81, 3, 2, 2, 2, 83, 84, 3, 2, 2, 2,
-	84, 86, 3, 2, 2, 2, 85, 57, 3, 2, 2, 2, 85, 64, 3, 2, 2, 2, 85, 71, 3,
-	2, 2, 2, 85, 78, 3, 2, 2, 2, 86, 7, 3, 2, 2, 2, 87, 90, 5, 10, 6, 2, 88,
-	89, 7, 6, 2, 2, 89, 91, 5, 10, 6, 2, 90, 88, 3, 2, 2, 2, 91, 92, 3, 2,
-	2, 2, 92, 90, 3, 2, 2, 2, 92, 93, 3, 2, 2, 2, 93, 9, 3, 2, 2, 2, 94, 97,
-	5, 12, 7, 2, 95, 97, 5, 14, 8, 2, 96, 94, 3, 2, 2, 2, 96, 95, 3, 2, 2,
-	2, 97, 11, 3, 2, 2, 2, 98, 99, 7, 7, 2, 2, 99, 100, 7, 5, 2, 2, 100, 101,
-	7, 4, 2, 2, 101, 13, 3, 2, 2, 2, 102, 107, 7, 7, 2, 2, 103, 104, 7, 7,
-	2, 2, 104, 105, 7, 5, 2, 2, 105, 107, 7, 7, 2, 2, 106, 102, 3, 2, 2, 2,
-	106, 103, 3, 2, 2, 2, 107, 15, 3, 2, 2, 2, 21, 17, 21, 24, 28, 31, 35,
-	38, 42, 45, 53, 55, 62, 69, 76, 83, 85, 92, 96, 106,
+	3, 24715, 42794, 33075, 47597, 16764, 15335, 30598, 22884, 3, 10, 122,
+	4, 2, 9, 2, 4, 3, 9, 3, 4, 4, 9, 4, 4, 5, 9, 5, 4, 6, 9, 6, 4, 7, 9, 7,
+	4, 8, 9, 8, 4, 9, 9, 9, 3, 2, 5, 2, 20, 10, 2, 3, 2, 3, 2, 5, 2, 24, 10,
+	2, 3, 2, 5, 2, 27, 10, 2, 3, 2, 3, 2, 5, 2, 31, 10, 2, 3, 2, 5, 2, 34,
+	10, 2, 3, 2, 3, 2, 5, 2, 38, 10, 2, 3, 2, 5, 2, 41, 10, 2, 3, 2, 3, 2,
+	5, 2, 45, 10, 2, 3, 2, 5, 2, 48, 10, 2, 3, 2, 3, 2, 5, 2, 52, 10, 2, 3,
+	2, 5, 2, 55, 10, 2, 3, 3, 3, 3, 3, 4, 3, 4, 3, 4, 3, 4, 6, 4, 63, 10, 4,
+	13, 4, 14, 4, 64, 5, 4, 67, 10, 4, 3, 5, 3, 5, 3, 5, 6, 5, 72, 10, 5, 13,
+	5, 14, 5, 73, 3, 5, 3, 5, 3, 5, 6, 5, 79, 10, 5, 13, 5, 14, 5, 80, 3, 5,
+	3, 5, 3, 5, 6, 5, 86, 10, 5, 13, 5, 14, 5, 87, 3, 5, 3, 5, 3, 5, 6, 5,
+	93, 10, 5, 13, 5, 14, 5, 94, 5, 5, 97, 10, 5, 3, 6, 3, 6, 3, 6, 6, 6, 102,
+	10, 6, 13, 6, 14, 6, 103, 3, 7, 3, 7, 5, 7, 108, 10, 7, 3, 8, 3, 8, 3,
+	8, 3, 8, 3, 9, 3, 9, 3, 9, 3, 9, 3, 9, 3, 9, 5, 9, 120, 10, 9, 3, 9, 2,
+	2, 10, 2, 4, 6, 8, 10, 12, 14, 16, 2, 3, 3, 2, 5, 6, 2, 141, 2, 54, 3,
+	2, 2, 2, 4, 56, 3, 2, 2, 2, 6, 66, 3, 2, 2, 2, 8, 96, 3, 2, 2, 2, 10, 98,
+	3, 2, 2, 2, 12, 107, 3, 2, 2, 2, 14, 109, 3, 2, 2, 2, 16, 119, 3, 2, 2,
+	2, 18, 20, 7, 3, 2, 2, 19, 18, 3, 2, 2, 2, 19, 20, 3, 2, 2, 2, 20, 21,
+	3, 2, 2, 2, 21, 23, 5, 8, 5, 2, 22, 24, 7, 3, 2, 2, 23, 22, 3, 2, 2, 2,
+	23, 24, 3, 2, 2, 2, 24, 55, 3, 2, 2, 2, 25, 27, 7, 3, 2, 2, 26, 25, 3,
+	2, 2, 2, 26, 27, 3, 2, 2, 2, 27, 28, 3, 2, 2, 2, 28, 30, 5, 10, 6, 2, 29,
+	31, 7, 3, 2, 2, 30, 29, 3, 2, 2, 2, 30, 31, 3, 2, 2, 2, 31, 55, 3, 2, 2,
+	2, 32, 34, 7, 3, 2, 2, 33, 32, 3, 2, 2, 2, 33, 34, 3, 2, 2, 2, 34, 35,
+	3, 2, 2, 2, 35, 37, 5, 12, 7, 2, 36, 38, 7, 3, 2, 2, 37, 36, 3, 2, 2, 2,
+	37, 38, 3, 2, 2, 2, 38, 55, 3, 2, 2, 2, 39, 41, 7, 3, 2, 2, 40, 39, 3,
+	2, 2, 2, 40, 41, 3, 2, 2, 2, 41, 42, 3, 2, 2, 2, 42, 44, 5, 6, 4, 2, 43,
+	45, 7, 3, 2, 2, 44, 43, 3, 2, 2, 2, 44, 45, 3, 2, 2, 2, 45, 55, 3, 2, 2,
+	2, 46, 48, 7, 3, 2, 2, 47, 46, 3, 2, 2, 2, 47, 48, 3, 2, 2, 2, 48, 49,
+	3, 2, 2, 2, 49, 51, 5, 4, 3, 2, 50, 52, 7, 3, 2, 2, 51, 50, 3, 2, 2, 2,
+	51, 52, 3, 2, 2, 2, 52, 55, 3, 2, 2, 2, 53, 55, 3, 2, 2, 2, 54, 19, 3,
+	2, 2, 2, 54, 26, 3, 2, 2, 2, 54, 33, 3, 2, 2, 2, 54, 40, 3, 2, 2, 2, 54,
+	47, 3, 2, 2, 2, 54, 53, 3, 2, 2, 2, 55, 3, 3, 2, 2, 2, 56, 57, 7, 7, 2,
+	2, 57, 5, 3, 2, 2, 2, 58, 67, 7, 4, 2, 2, 59, 62, 7, 4, 2, 2, 60, 61, 7,
+	3, 2, 2, 61, 63, 7, 4, 2, 2, 62, 60, 3, 2, 2, 2, 63, 64, 3, 2, 2, 2, 64,
+	62, 3, 2, 2, 2, 64, 65, 3, 2, 2, 2, 65, 67, 3, 2, 2, 2, 66, 58, 3, 2, 2,
+	2, 66, 59, 3, 2, 2, 2, 67, 7, 3, 2, 2, 2, 68, 71, 5, 10, 6, 2, 69, 70,
+	7, 3, 2, 2, 70, 72, 5, 10, 6, 2, 71, 69, 3, 2, 2, 2, 72, 73, 3, 2, 2, 2,
+	73, 71, 3, 2, 2, 2, 73, 74, 3, 2, 2, 2, 74, 97, 3, 2, 2, 2, 75, 78, 5,
+	10, 6, 2, 76, 77, 7, 3, 2, 2, 77, 79, 5, 12, 7, 2, 78, 76, 3, 2, 2, 2,
+	79, 80, 3, 2, 2, 2, 80, 78, 3, 2, 2, 2, 80, 81, 3, 2, 2, 2, 81, 97, 3,
+	2, 2, 2, 82, 85, 5, 12, 7, 2, 83, 84, 7, 3, 2, 2, 84, 86, 5, 10, 6, 2,
+	85, 83, 3, 2, 2, 2, 86, 87, 3, 2, 2, 2, 87, 85, 3, 2, 2, 2, 87, 88, 3,
+	2, 2, 2, 88, 97, 3, 2, 2, 2, 89, 92, 5, 12, 7, 2, 90, 91, 7, 3, 2, 2, 91,
+	93, 5, 12, 7, 2, 92, 90, 3, 2, 2, 2, 93, 94, 3, 2, 2, 2, 94, 92, 3, 2,
+	2, 2, 94, 95, 3, 2, 2, 2, 95, 97, 3, 2, 2, 2, 96, 68, 3, 2, 2, 2, 96, 75,
+	3, 2, 2, 2, 96, 82, 3, 2, 2, 2, 96, 89, 3, 2, 2, 2, 97, 9, 3, 2, 2, 2,
+	98, 101, 5, 12, 7, 2, 99, 100, 7, 9, 2, 2, 100, 102, 5, 12, 7, 2, 101,
+	99, 3, 2, 2, 2, 102, 103, 3, 2, 2, 2, 103, 101, 3, 2, 2, 2, 103, 104, 3,
+	2, 2, 2, 104, 11, 3, 2, 2, 2, 105, 108, 5, 14, 8, 2, 106, 108, 5, 16, 9,
+	2, 107, 105, 3, 2, 2, 2, 107, 106, 3, 2, 2, 2, 108, 13, 3, 2, 2, 2, 109,
+	110, 7, 10, 2, 2, 110, 111, 9, 2, 2, 2, 111, 112, 7, 4, 2, 2, 112, 15,
+	3, 2, 2, 2, 113, 120, 7, 10, 2, 2, 114, 115, 7, 8, 2, 2, 115, 120, 7, 10,
+	2, 2, 116, 117, 7, 10, 2, 2, 117, 118, 9, 2, 2, 2, 118, 120, 7, 10, 2,
+	2, 119, 113, 3, 2, 2, 2, 119, 114, 3, 2, 2, 2, 119, 116, 3, 2, 2, 2, 120,
+	17, 3, 2, 2, 2, 23, 19, 23, 26, 30, 33, 37, 40, 44, 47, 51, 54, 64, 66,
+	73, 80, 87, 94, 96, 103, 107, 119,
 }
 var deserializer = antlr.NewATNDeserializer(nil)
 var deserializedATN = deserializer.DeserializeFromUInt16(parserATN)
 
 var literalNames = []string{
-	"", "'/'", "", "'='", "','",
+	"", "'/'", "", "'='", "'!='", "'!*'", "'!'", "','",
 }
 var symbolicNames = []string{
-	"", "AND", "ANY", "EQ", "OR", "STRING",
+	"", "AND", "ANY", "EQ", "NEQ", "NONE", "NOT", "OR", "STRING",
 }
 
 var ruleNames = []string{
-	"query", "anyExpr", "andExpr", "orExpr", "tag", "classifierTagExpr", "nameTagExpr",
+	"query", "noneExpr", "anyExpr", "andExpr", "orExpr", "tag", "classifierTagExpr",
+	"nameTagExpr",
 }
 var decisionToDFA = make([]*antlr.DFA, len(deserializedATN.DecisionToState))
 
@@ -109,19 +117,23 @@ const (
 	PathParserAND    = 1
 	PathParserANY    = 2
 	PathParserEQ     = 3
-	PathParserOR     = 4
-	PathParserSTRING = 5
+	PathParserNEQ    = 4
+	PathParserNONE   = 5
+	PathParserNOT    = 6
+	PathParserOR     = 7
+	PathParserSTRING = 8
 )
 
 // PathParser rules.
 const (
 	PathParserRULE_query             = 0
-	PathParserRULE_anyExpr           = 1
-	PathParserRULE_andExpr           = 2
-	PathParserRULE_orExpr            = 3
-	PathParserRULE_tag               = 4
-	PathParserRULE_classifierTagExpr = 5
-	PathParserRULE_nameTagExpr       = 6
+	PathParserRULE_noneExpr          = 1
+	PathParserRULE_anyExpr           = 2
+	PathParserRULE_andExpr           = 3
+	PathParserRULE_orExpr            = 4
+	PathParserRULE_tag               = 5
+	PathParserRULE_classifierTagExpr = 6
+	PathParserRULE_nameTagExpr       = 7
 )
 
 // IQueryContext is an interface to support dynamic dispatch.
@@ -210,6 +222,16 @@ func (s *QueryContext) AnyExpr() IAnyExprContext {
 	return t.(IAnyExprContext)
 }
 
+func (s *QueryContext) NoneExpr() INoneExprContext {
+	var t = s.GetTypedRuleContext(reflect.TypeOf((*INoneExprContext)(nil)).Elem(), 0)
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(INoneExprContext)
+}
+
 func (s *QueryContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
@@ -251,33 +273,33 @@ func (p *PathParser) Query() (localctx IQueryContext) {
 		}
 	}()
 
-	p.SetState(43)
+	p.SetState(52)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 8, p.GetParserRuleContext()) {
+	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 10, p.GetParserRuleContext()) {
 	case 1:
 		p.EnterOuterAlt(localctx, 1)
-		p.SetState(15)
+		p.SetState(17)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PathParserAND {
 			{
-				p.SetState(14)
+				p.SetState(16)
 				p.Match(PathParserAND)
 			}
 
 		}
 		{
-			p.SetState(17)
+			p.SetState(19)
 			p.AndExpr()
 		}
-		p.SetState(19)
+		p.SetState(21)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PathParserAND {
 			{
-				p.SetState(18)
+				p.SetState(20)
 				p.Match(PathParserAND)
 			}
 
@@ -285,28 +307,28 @@ func (p *PathParser) Query() (localctx IQueryContext) {
 
 	case 2:
 		p.EnterOuterAlt(localctx, 2)
-		p.SetState(22)
+		p.SetState(24)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PathParserAND {
 			{
-				p.SetState(21)
+				p.SetState(23)
 				p.Match(PathParserAND)
 			}
 
 		}
 		{
-			p.SetState(24)
+			p.SetState(26)
 			p.OrExpr()
 		}
-		p.SetState(26)
+		p.SetState(28)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PathParserAND {
 			{
-				p.SetState(25)
+				p.SetState(27)
 				p.Match(PathParserAND)
 			}
 
@@ -314,28 +336,28 @@ func (p *PathParser) Query() (localctx IQueryContext) {
 
 	case 3:
 		p.EnterOuterAlt(localctx, 3)
-		p.SetState(29)
+		p.SetState(31)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PathParserAND {
 			{
-				p.SetState(28)
+				p.SetState(30)
 				p.Match(PathParserAND)
 			}
 
 		}
 		{
-			p.SetState(31)
+			p.SetState(33)
 			p.Tag()
 		}
-		p.SetState(33)
+		p.SetState(35)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PathParserAND {
 			{
-				p.SetState(32)
+				p.SetState(34)
 				p.Match(PathParserAND)
 			}
 
@@ -343,28 +365,28 @@ func (p *PathParser) Query() (localctx IQueryContext) {
 
 	case 4:
 		p.EnterOuterAlt(localctx, 4)
-		p.SetState(36)
+		p.SetState(38)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PathParserAND {
 			{
-				p.SetState(35)
+				p.SetState(37)
 				p.Match(PathParserAND)
 			}
 
 		}
 		{
-			p.SetState(38)
+			p.SetState(40)
 			p.AnyExpr()
 		}
-		p.SetState(40)
+		p.SetState(42)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 
 		if _la == PathParserAND {
 			{
-				p.SetState(39)
+				p.SetState(41)
 				p.Match(PathParserAND)
 			}
 
@@ -372,7 +394,127 @@ func (p *PathParser) Query() (localctx IQueryContext) {
 
 	case 5:
 		p.EnterOuterAlt(localctx, 5)
+		p.SetState(45)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
 
+		if _la == PathParserAND {
+			{
+				p.SetState(44)
+				p.Match(PathParserAND)
+			}
+
+		}
+		{
+			p.SetState(47)
+			p.NoneExpr()
+		}
+		p.SetState(49)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
+
+		if _la == PathParserAND {
+			{
+				p.SetState(48)
+				p.Match(PathParserAND)
+			}
+
+		}
+
+	case 6:
+		p.EnterOuterAlt(localctx, 6)
+
+	}
+
+	return localctx
+}
+
+// INoneExprContext is an interface to support dynamic dispatch.
+type INoneExprContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsNoneExprContext differentiates from other interfaces.
+	IsNoneExprContext()
+}
+
+type NoneExprContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyNoneExprContext() *NoneExprContext {
+	var p = new(NoneExprContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = PathParserRULE_noneExpr
+	return p
+}
+
+func (*NoneExprContext) IsNoneExprContext() {}
+
+func NewNoneExprContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *NoneExprContext {
+	var p = new(NoneExprContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = PathParserRULE_noneExpr
+
+	return p
+}
+
+func (s *NoneExprContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *NoneExprContext) NONE() antlr.TerminalNode {
+	return s.GetToken(PathParserNONE, 0)
+}
+
+func (s *NoneExprContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *NoneExprContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *NoneExprContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(PathListener); ok {
+		listenerT.EnterNoneExpr(s)
+	}
+}
+
+func (s *NoneExprContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(PathListener); ok {
+		listenerT.ExitNoneExpr(s)
+	}
+}
+
+func (p *PathParser) NoneExpr() (localctx INoneExprContext) {
+	localctx = NewNoneExprContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 2, PathParserRULE_noneExpr)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(54)
+		p.Match(PathParserNONE)
 	}
 
 	return localctx
@@ -454,7 +596,7 @@ func (s *AnyExprContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *PathParser) AnyExpr() (localctx IAnyExprContext) {
 	localctx = NewAnyExprContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 2, PathParserRULE_anyExpr)
+	p.EnterRule(localctx, 4, PathParserRULE_anyExpr)
 
 	defer func() {
 		p.ExitRule()
@@ -474,34 +616,34 @@ func (p *PathParser) AnyExpr() (localctx IAnyExprContext) {
 
 	var _alt int
 
-	p.SetState(53)
+	p.SetState(64)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 10, p.GetParserRuleContext()) {
+	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 12, p.GetParserRuleContext()) {
 	case 1:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(45)
+			p.SetState(56)
 			p.Match(PathParserANY)
 		}
 
 	case 2:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(46)
+			p.SetState(57)
 			p.Match(PathParserANY)
 		}
-		p.SetState(49)
+		p.SetState(60)
 		p.GetErrorHandler().Sync(p)
 		_alt = 1
 		for ok := true; ok; ok = _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 			switch _alt {
 			case 1:
 				{
-					p.SetState(47)
+					p.SetState(58)
 					p.Match(PathParserAND)
 				}
 				{
-					p.SetState(48)
+					p.SetState(59)
 					p.Match(PathParserANY)
 				}
 
@@ -509,9 +651,9 @@ func (p *PathParser) AnyExpr() (localctx IAnyExprContext) {
 				panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 			}
 
-			p.SetState(51)
+			p.SetState(62)
 			p.GetErrorHandler().Sync(p)
-			_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 9, p.GetParserRuleContext())
+			_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 11, p.GetParserRuleContext())
 		}
 
 	}
@@ -633,7 +775,7 @@ func (s *AndExprContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *PathParser) AndExpr() (localctx IAndExprContext) {
 	localctx = NewAndExprContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 4, PathParserRULE_andExpr)
+	p.EnterRule(localctx, 6, PathParserRULE_andExpr)
 
 	defer func() {
 		p.ExitRule()
@@ -653,27 +795,27 @@ func (p *PathParser) AndExpr() (localctx IAndExprContext) {
 
 	var _alt int
 
-	p.SetState(83)
+	p.SetState(94)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 15, p.GetParserRuleContext()) {
+	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 17, p.GetParserRuleContext()) {
 	case 1:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(55)
+			p.SetState(66)
 			p.OrExpr()
 		}
-		p.SetState(58)
+		p.SetState(69)
 		p.GetErrorHandler().Sync(p)
 		_alt = 1
 		for ok := true; ok; ok = _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 			switch _alt {
 			case 1:
 				{
-					p.SetState(56)
+					p.SetState(67)
 					p.Match(PathParserAND)
 				}
 				{
-					p.SetState(57)
+					p.SetState(68)
 					p.OrExpr()
 				}
 
@@ -681,29 +823,29 @@ func (p *PathParser) AndExpr() (localctx IAndExprContext) {
 				panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 			}
 
-			p.SetState(60)
+			p.SetState(71)
 			p.GetErrorHandler().Sync(p)
-			_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 11, p.GetParserRuleContext())
+			_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 13, p.GetParserRuleContext())
 		}
 
 	case 2:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(62)
+			p.SetState(73)
 			p.OrExpr()
 		}
-		p.SetState(65)
+		p.SetState(76)
 		p.GetErrorHandler().Sync(p)
 		_alt = 1
 		for ok := true; ok; ok = _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 			switch _alt {
 			case 1:
 				{
-					p.SetState(63)
+					p.SetState(74)
 					p.Match(PathParserAND)
 				}
 				{
-					p.SetState(64)
+					p.SetState(75)
 					p.Tag()
 				}
 
@@ -711,29 +853,29 @@ func (p *PathParser) AndExpr() (localctx IAndExprContext) {
 				panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 			}
 
-			p.SetState(67)
+			p.SetState(78)
 			p.GetErrorHandler().Sync(p)
-			_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 12, p.GetParserRuleContext())
+			_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 14, p.GetParserRuleContext())
 		}
 
 	case 3:
 		p.EnterOuterAlt(localctx, 3)
 		{
-			p.SetState(69)
+			p.SetState(80)
 			p.Tag()
 		}
-		p.SetState(72)
+		p.SetState(83)
 		p.GetErrorHandler().Sync(p)
 		_alt = 1
 		for ok := true; ok; ok = _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 			switch _alt {
 			case 1:
 				{
-					p.SetState(70)
+					p.SetState(81)
 					p.Match(PathParserAND)
 				}
 				{
-					p.SetState(71)
+					p.SetState(82)
 					p.OrExpr()
 				}
 
@@ -741,29 +883,29 @@ func (p *PathParser) AndExpr() (localctx IAndExprContext) {
 				panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 			}
 
-			p.SetState(74)
+			p.SetState(85)
 			p.GetErrorHandler().Sync(p)
-			_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 13, p.GetParserRuleContext())
+			_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 15, p.GetParserRuleContext())
 		}
 
 	case 4:
 		p.EnterOuterAlt(localctx, 4)
 		{
-			p.SetState(76)
+			p.SetState(87)
 			p.Tag()
 		}
-		p.SetState(79)
+		p.SetState(90)
 		p.GetErrorHandler().Sync(p)
 		_alt = 1
 		for ok := true; ok; ok = _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
 			switch _alt {
 			case 1:
 				{
-					p.SetState(77)
+					p.SetState(88)
 					p.Match(PathParserAND)
 				}
 				{
-					p.SetState(78)
+					p.SetState(89)
 					p.Tag()
 				}
 
@@ -771,9 +913,9 @@ func (p *PathParser) AndExpr() (localctx IAndExprContext) {
 				panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
 			}
 
-			p.SetState(81)
+			p.SetState(92)
 			p.GetErrorHandler().Sync(p)
-			_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 14, p.GetParserRuleContext())
+			_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 16, p.GetParserRuleContext())
 		}
 
 	}
@@ -872,7 +1014,7 @@ func (s *OrExprContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *PathParser) OrExpr() (localctx IOrExprContext) {
 	localctx = NewOrExprContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 6, PathParserRULE_orExpr)
+	p.EnterRule(localctx, 8, PathParserRULE_orExpr)
 	var _la int
 
 	defer func() {
@@ -893,24 +1035,24 @@ func (p *PathParser) OrExpr() (localctx IOrExprContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(85)
+		p.SetState(96)
 		p.Tag()
 	}
-	p.SetState(88)
+	p.SetState(99)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
 	for ok := true; ok; ok = _la == PathParserOR {
 		{
-			p.SetState(86)
+			p.SetState(97)
 			p.Match(PathParserOR)
 		}
 		{
-			p.SetState(87)
+			p.SetState(98)
 			p.Tag()
 		}
 
-		p.SetState(90)
+		p.SetState(101)
 		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
 	}
@@ -998,7 +1140,7 @@ func (s *TagContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *PathParser) Tag() (localctx ITagContext) {
 	localctx = NewTagContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 8, PathParserRULE_tag)
+	p.EnterRule(localctx, 10, PathParserRULE_tag)
 
 	defer func() {
 		p.ExitRule()
@@ -1016,20 +1158,20 @@ func (p *PathParser) Tag() (localctx ITagContext) {
 		}
 	}()
 
-	p.SetState(94)
+	p.SetState(105)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 17, p.GetParserRuleContext()) {
+	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 19, p.GetParserRuleContext()) {
 	case 1:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(92)
+			p.SetState(103)
 			p.ClassifierTagExpr()
 		}
 
 	case 2:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(93)
+			p.SetState(104)
 			p.NameTagExpr()
 		}
 
@@ -1113,12 +1255,16 @@ func (s *ClassifierTagExprContext) STRING() antlr.TerminalNode {
 	return s.GetToken(PathParserSTRING, 0)
 }
 
+func (s *ClassifierTagExprContext) ANY() antlr.TerminalNode {
+	return s.GetToken(PathParserANY, 0)
+}
+
 func (s *ClassifierTagExprContext) EQ() antlr.TerminalNode {
 	return s.GetToken(PathParserEQ, 0)
 }
 
-func (s *ClassifierTagExprContext) ANY() antlr.TerminalNode {
-	return s.GetToken(PathParserANY, 0)
+func (s *ClassifierTagExprContext) NEQ() antlr.TerminalNode {
+	return s.GetToken(PathParserNEQ, 0)
 }
 
 func (s *ClassifierTagExprContext) GetRuleContext() antlr.RuleContext {
@@ -1143,7 +1289,8 @@ func (s *ClassifierTagExprContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *PathParser) ClassifierTagExpr() (localctx IClassifierTagExprContext) {
 	localctx = NewClassifierTagExprContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 10, PathParserRULE_classifierTagExpr)
+	p.EnterRule(localctx, 12, PathParserRULE_classifierTagExpr)
+	var _la int
 
 	defer func() {
 		p.ExitRule()
@@ -1163,21 +1310,32 @@ func (p *PathParser) ClassifierTagExpr() (localctx IClassifierTagExprContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(96)
+		p.SetState(107)
 
 		var _m = p.Match(PathParserSTRING)
 
 		localctx.(*ClassifierTagExprContext).classifier = _m
 	}
 	{
-		p.SetState(97)
+		p.SetState(108)
 
-		var _m = p.Match(PathParserEQ)
+		var _lt = p.GetTokenStream().LT(1)
 
-		localctx.(*ClassifierTagExprContext).op = _m
+		localctx.(*ClassifierTagExprContext).op = _lt
+
+		_la = p.GetTokenStream().LA(1)
+
+		if !(_la == PathParserEQ || _la == PathParserNEQ) {
+			var _ri = p.GetErrorHandler().RecoverInline(p)
+
+			localctx.(*ClassifierTagExprContext).op = _ri
+		} else {
+			p.GetErrorHandler().ReportMatch(p)
+			p.Consume()
+		}
 	}
 	{
-		p.SetState(98)
+		p.SetState(109)
 
 		var _m = p.Match(PathParserANY)
 
@@ -1197,20 +1355,20 @@ type INameTagExprContext interface {
 	// GetName returns the name token.
 	GetName() antlr.Token
 
-	// GetClassifier returns the classifier token.
-	GetClassifier() antlr.Token
-
 	// GetOp returns the op token.
 	GetOp() antlr.Token
+
+	// GetClassifier returns the classifier token.
+	GetClassifier() antlr.Token
 
 	// SetName sets the name token.
 	SetName(antlr.Token)
 
-	// SetClassifier sets the classifier token.
-	SetClassifier(antlr.Token)
-
 	// SetOp sets the op token.
 	SetOp(antlr.Token)
+
+	// SetClassifier sets the classifier token.
+	SetClassifier(antlr.Token)
 
 	// IsNameTagExprContext differentiates from other interfaces.
 	IsNameTagExprContext()
@@ -1220,8 +1378,8 @@ type NameTagExprContext struct {
 	*antlr.BaseParserRuleContext
 	parser     antlr.Parser
 	name       antlr.Token
-	classifier antlr.Token
 	op         antlr.Token
+	classifier antlr.Token
 }
 
 func NewEmptyNameTagExprContext() *NameTagExprContext {
@@ -1248,15 +1406,15 @@ func (s *NameTagExprContext) GetParser() antlr.Parser { return s.parser }
 
 func (s *NameTagExprContext) GetName() antlr.Token { return s.name }
 
-func (s *NameTagExprContext) GetClassifier() antlr.Token { return s.classifier }
-
 func (s *NameTagExprContext) GetOp() antlr.Token { return s.op }
+
+func (s *NameTagExprContext) GetClassifier() antlr.Token { return s.classifier }
 
 func (s *NameTagExprContext) SetName(v antlr.Token) { s.name = v }
 
-func (s *NameTagExprContext) SetClassifier(v antlr.Token) { s.classifier = v }
-
 func (s *NameTagExprContext) SetOp(v antlr.Token) { s.op = v }
+
+func (s *NameTagExprContext) SetClassifier(v antlr.Token) { s.classifier = v }
 
 func (s *NameTagExprContext) AllSTRING() []antlr.TerminalNode {
 	return s.GetTokens(PathParserSTRING)
@@ -1266,8 +1424,16 @@ func (s *NameTagExprContext) STRING(i int) antlr.TerminalNode {
 	return s.GetToken(PathParserSTRING, i)
 }
 
+func (s *NameTagExprContext) NOT() antlr.TerminalNode {
+	return s.GetToken(PathParserNOT, 0)
+}
+
 func (s *NameTagExprContext) EQ() antlr.TerminalNode {
 	return s.GetToken(PathParserEQ, 0)
+}
+
+func (s *NameTagExprContext) NEQ() antlr.TerminalNode {
+	return s.GetToken(PathParserNEQ, 0)
 }
 
 func (s *NameTagExprContext) GetRuleContext() antlr.RuleContext {
@@ -1292,7 +1458,8 @@ func (s *NameTagExprContext) ExitRule(listener antlr.ParseTreeListener) {
 
 func (p *PathParser) NameTagExpr() (localctx INameTagExprContext) {
 	localctx = NewNameTagExprContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 12, PathParserRULE_nameTagExpr)
+	p.EnterRule(localctx, 14, PathParserRULE_nameTagExpr)
+	var _la int
 
 	defer func() {
 		p.ExitRule()
@@ -1310,13 +1477,13 @@ func (p *PathParser) NameTagExpr() (localctx INameTagExprContext) {
 		}
 	}()
 
-	p.SetState(104)
+	p.SetState(117)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 18, p.GetParserRuleContext()) {
+	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 20, p.GetParserRuleContext()) {
 	case 1:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(100)
+			p.SetState(111)
 
 			var _m = p.Match(PathParserSTRING)
 
@@ -1326,21 +1493,49 @@ func (p *PathParser) NameTagExpr() (localctx INameTagExprContext) {
 	case 2:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(101)
+			p.SetState(112)
+
+			var _m = p.Match(PathParserNOT)
+
+			localctx.(*NameTagExprContext).op = _m
+		}
+		{
+			p.SetState(113)
+
+			var _m = p.Match(PathParserSTRING)
+
+			localctx.(*NameTagExprContext).name = _m
+		}
+
+	case 3:
+		p.EnterOuterAlt(localctx, 3)
+		{
+			p.SetState(114)
 
 			var _m = p.Match(PathParserSTRING)
 
 			localctx.(*NameTagExprContext).classifier = _m
 		}
 		{
-			p.SetState(102)
+			p.SetState(115)
 
-			var _m = p.Match(PathParserEQ)
+			var _lt = p.GetTokenStream().LT(1)
 
-			localctx.(*NameTagExprContext).op = _m
+			localctx.(*NameTagExprContext).op = _lt
+
+			_la = p.GetTokenStream().LA(1)
+
+			if !(_la == PathParserEQ || _la == PathParserNEQ) {
+				var _ri = p.GetErrorHandler().RecoverInline(p)
+
+				localctx.(*NameTagExprContext).op = _ri
+			} else {
+				p.GetErrorHandler().ReportMatch(p)
+				p.Consume()
+			}
 		}
 		{
-			p.SetState(103)
+			p.SetState(116)
 
 			var _m = p.Match(PathParserSTRING)
 

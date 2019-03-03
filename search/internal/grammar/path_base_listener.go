@@ -26,6 +26,12 @@ func (s *BasePathListener) EnterQuery(ctx *QueryContext) {}
 // ExitQuery is called when production query is exited.
 func (s *BasePathListener) ExitQuery(ctx *QueryContext) {}
 
+// EnterNoneExpr is called when production noneExpr is entered.
+func (s *BasePathListener) EnterNoneExpr(ctx *NoneExprContext) {}
+
+// ExitNoneExpr is called when production noneExpr is exited.
+func (s *BasePathListener) ExitNoneExpr(ctx *NoneExprContext) {}
+
 // EnterAnyExpr is called when production anyExpr is entered.
 func (s *BasePathListener) EnterAnyExpr(ctx *AnyExprContext) {}
 

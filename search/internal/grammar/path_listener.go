@@ -10,6 +10,9 @@ type PathListener interface {
 	// EnterQuery is called when entering the query production.
 	EnterQuery(c *QueryContext)
 
+	// EnterNoneExpr is called when entering the noneExpr production.
+	EnterNoneExpr(c *NoneExprContext)
+
 	// EnterAnyExpr is called when entering the anyExpr production.
 	EnterAnyExpr(c *AnyExprContext)
 
@@ -30,6 +33,9 @@ type PathListener interface {
 
 	// ExitQuery is called when exiting the query production.
 	ExitQuery(c *QueryContext)
+
+	// ExitNoneExpr is called when exiting the noneExpr production.
+	ExitNoneExpr(c *NoneExprContext)
 
 	// ExitAnyExpr is called when exiting the anyExpr production.
 	ExitAnyExpr(c *AnyExprContext)

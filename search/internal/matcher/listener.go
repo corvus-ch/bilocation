@@ -1,6 +1,7 @@
 package matcher
 
 import (
+	"github.com/antlr/antlr4/runtime/Go/antlr"
 	"github.com/corvus-ch/bilocation/search/internal/grammar"
 )
 
@@ -23,6 +24,11 @@ func (l *path) ExitQuery(c *grammar.QueryContext) {
 	}
 }
 
+func (l *path) ExitNoneExpr(c *grammar.NoneExprContext) {
+	l.stack.Drain()
+	l.stack.Push(NewNone())
+}
+
 func (l *path) ExitAnyExpr(c *grammar.AnyExprContext) {
 	l.stack.Drain()
 	l.stack.Push(NewAny())
@@ -37,24 +43,63 @@ func (l *path) ExitOrExpr(c *grammar.OrExprContext) {
 }
 
 func (l *path) ExitClassifierTagExpr(c *grammar.ClassifierTagExprContext) {
-	classifier := ""
+	m := NewClassifier(getClassifierText(c))
 
-	if classifierToken := c.GetClassifier(); classifierToken != nil {
-		classifier = classifierToken.GetText()
+	if op := getOp(c); op == "!=" {
+		m = NewNot(m)
 	}
 
-	l.stack.Push(NewClassifier(classifier))
+	l.stack.Push(m)
 }
 
 func (l *path) ExitNameTagExpr(c *grammar.NameTagExprContext) {
-	name := ""
-	if nameToken := c.GetName(); nameToken != nil {
-		name = nameToken.GetText()
+	var m Matcher
+
+	if classifier := getClassifierText(c); len(classifier) > 0 {
+		m = NewNameAndClassifier(getName(c), classifier)
+	} else {
+		m = NewName(getName(c))
 	}
 
-	if classifierToken := c.GetClassifier(); classifierToken != nil {
-		l.stack.Push(NewNameAndClassifier(name, classifierToken.GetText()))
+	if op := getOp(c); op == "!" || op == "!=" {
+		m = NewNot(m)
 	}
 
-	l.stack.Push(NewName(name))
+	l.stack.Push(m)
+}
+
+type nameContext interface {
+	GetName() antlr.Token
+}
+
+func getName(ctx nameContext) string {
+	if t := ctx.GetName(); t != nil {
+		return t.GetText()
+	}
+
+	return ""
+}
+
+type classifierContext interface {
+	GetClassifier() antlr.Token
+}
+
+func getClassifierText(ctx classifierContext) string {
+	if t := ctx.GetClassifier(); t != nil {
+		return t.GetText()
+	}
+
+	return ""
+}
+
+type opContext interface {
+	GetOp() antlr.Token
+}
+
+func getOp(ctx opContext) string {
+	if t := ctx.GetOp(); t != nil {
+		return t.GetText()
+	}
+
+	return ""
 }

@@ -31,6 +31,30 @@ func TestAny(t *testing.T) {
 	}
 }
 
+func TestNot(t *testing.T) {
+	for name, set := range sets {
+		t.Run(name, func(t *testing.T) {
+			assert.False(t, matcher.NewNot(matcher.NewAny()).Match(set))
+			assert.True(t, matcher.NewNot(matcher.NewNil()).Match(set))
+		})
+	}
+}
+
+var noneTests = map[string]bool{
+	"empty":            true,
+	"name":             false,
+	"name_classifier":  false,
+	"name_classifiers": false,
+}
+
+func TestNone(t *testing.T) {
+	for name, set := range sets {
+		t.Run(name, func(t *testing.T) {
+			assert.Equal(t, noneTests[name], matcher.NewNone().Match(set))
+		})
+	}
+}
+
 var nameTests = map[string]bool{
 	"empty":            false,
 	"name":             true,

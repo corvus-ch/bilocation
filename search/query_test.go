@@ -10,20 +10,25 @@ import (
 
 func TestMatcher(t *testing.T) {
 	tests := map[string][]bool{
-		"":      {false, false, false, false, false},
-		"*":     {true, true, true, true, true},
-		"a":     {true, false, true, true, false},
-		"b":     {false, true, true, false, false},
-		"c":     {false, false, false, true, false},
-		"d=*":   {false, false, false, true, true},
-		"d=c":   {false, false, false, true, false},
-		"a/b":   {false, false, true, false, false},
-		"a,b":   {true, true, true, true, false},
-		"a/b/c": {false, false, false, false, false},
-		"a,b/c": {false, false, false, true, false},
+		"":      {false, false, false, false, false, false},
+		"*":     {true, true, true, true, true, true},
+		"!*":    {true, false, false, false, false, false},
+		"a":     {false, true, false, true, true, false},
+		"!a":    {true, false, true, false, false, true},
+		"b":     {false, false, true, true, false, false},
+		"c":     {false, false, false, false, true, false},
+		"d=*":   {false, false, false, false, true, true},
+		"d!=*":  {true, true, true, true, false, false},
+		"d=c":   {false, false, false, false, true, false},
+		"d!=c":  {true, true, true, true, false, true},
+		"a/b":   {false, false, false, true, false, false},
+		"a,b":   {false, true, true, true, true, false},
+		"a/b/c": {false, false, false, false, false, false},
+		"a,b/c": {false, false, false, false, true, false},
 	}
 
 	data := []tag.Set{
+		{},
 		{"a": map[string]struct{}{}},
 		{"b": map[string]struct{}{}},
 		{"a": map[string]struct{}{}, "b": map[string]struct{}{}},
