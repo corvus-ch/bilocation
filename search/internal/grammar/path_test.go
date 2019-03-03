@@ -13,9 +13,12 @@ import (
 var queries = map[string][]string{
 	"empty": {""},
 	"any":   {"*", "**", "*/*", "/*/*", "*/*/", "/*/*/", "**/*", "/**/*", "**/*/", "/**/*/"},
+	"none":  {"!*"},
 
 	"a":   {"a", "/a", "/a/", "a/"},
-	"a=b": {"a=b", "/a=b", "/a=b/", "a=b/"},
+	"not": {"!a", "/!a", "/!a/", "!a/"},
+	"eq":  {"a=b", "/a=b", "/a=b/", "a=b/"},
+	"neq": {"a!=b", "/a!=b", "/a!=b/", "a!=b/"},
 
 	"and ab":      {"a/b", "/a/b", "/a/b/", "a/b/"},
 	"and abc":     {"a/b/c", "/a/b/c", "/a/b/c/", "a/b/c/"},
@@ -59,6 +62,11 @@ type TestListener struct {
 
 func (tl *TestListener) EnterQuery(c *grammar.QueryContext) {
 	tl.log.Infof("query:")
+}
+
+func (tl *TestListener) EnterNoneExpr(c *grammar.NoneExprContext) {
+	tl.indent += "\t"
+	tl.log.Infof("%sNONE", tl.indent)
 }
 
 func (tl *TestListener) EnterAnyExpr(c *grammar.AnyExprContext) {
