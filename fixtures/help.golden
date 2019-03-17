@@ -16,6 +16,9 @@ ERROR
 ERROR   untag <file> <tag>...
 ERROR     removes a tag from a file
 ERROR 
+ERROR   inspect <file>
+ERROR     show the tags of a file
+ERROR 
 ERROR   search [<flags>] <query>
 ERROR     search for files wit a given tag
 ERROR 

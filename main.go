@@ -28,6 +28,7 @@ func App(log logr.Logger) *kingpin.Application {
 	cfg := cmd.NewConfig(log)
 	cmd.Tag(app, cfg)
 	cmd.Untag(app, cfg)
+	cmd.Inspect(app, cfg)
 	cmd.Search(app, cfg)
 	cmd.Summary(app, cfg)
 
