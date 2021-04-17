@@ -1,5 +1,7 @@
 module github.com/corvus-ch/bilocation
 
+go 1.16
+
 require (
 	bou.ke/monkey v1.0.1 // indirect
 	github.com/alecthomas/template v0.0.0-20160405071501-a0175ee3bccc // indirect
