@@ -10,7 +10,6 @@ github.com/bketelsen/logr v0.0.0-20170116012416-f3d070bdd1c5 h1:k5oblHm+AdEGmDZA
 github.com/bketelsen/logr v0.0.0-20170116012416-f3d070bdd1c5/go.mod h1:to4EbfYTEzdQuHxVGz1ug+d7a3bqOjR1r02gJ1Xv4z8=
 github.com/corvus-ch/logr v0.0.0-20180917163152-45217966b77e h1:wL16/ZX3hdvCz4Xuz2oWSA9g4tV1N4sNFD3MYEUdDQM=
 github.com/corvus-ch/logr v0.0.0-20180917163152-45217966b77e/go.mod h1:vDjLhcz5/6EgBgZdQ5BxE5YAzHHkkfX8XLMPOBhlg2c=
-github.com/davecgh/go-spew v1.1.0 h1:ZDRjVQ15GmhC3fiQ8ni8+OwkZQO4DARzQgrnXU1Liz8=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
