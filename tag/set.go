@@ -1,6 +1,9 @@
 package tag
 
 import (
+	"fmt"
+	"strings"
+
 	"github.com/corvus-ch/bilocation/tag/internal"
 	"github.com/golang/protobuf/proto"
 )
@@ -103,4 +106,15 @@ func (s Set) Bytes() ([]byte, error) {
 		set.Tags = append(set.Tags, tag)
 	}
 	return proto.Marshal(set)
+}
+
+func (s Set) String() string {
+	var pairs []string
+	for value, keys := range s {
+		for key := range keys {
+			pairs = append(pairs, fmt.Sprintf("%s='%s'", key, value))
+		}
+	}
+
+	return strings.Join(pairs, " ")
 }

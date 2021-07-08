@@ -31,6 +31,7 @@ func App(log logr.Logger) *kingpin.Application {
 	cmd.Inspect(app, cfg)
 	cmd.Search(app, cfg)
 	cmd.Summary(app, cfg)
+	cmd.NameToTag(app, cfg)
 
 	return app
 }
